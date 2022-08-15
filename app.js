@@ -8,7 +8,18 @@ function createGrid(width=16, height=16) {
     let cell = document.createElement("div");
     cell.style.border = "1px solid black"
     cell.className = "cell";
+    cell.addEventListener('mouseover', () => {
+        cell.style.backgroundColor = getColor();
+    })
     bigContainer.appendChild(cell);
   }}
-  
 };
+
+function getColor() {
+  color = "black"
+  return color
+}
+
+let reset = document.querySelector('button')
+
+createGrid();
