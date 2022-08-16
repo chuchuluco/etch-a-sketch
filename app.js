@@ -21,6 +21,24 @@ function getColor() {
   return color
 }
 
-let reset = document.querySelector('button')
+let gridMod = document.querySelector('.new-grid');
+gridMod.addEventListener("click", newGrid);
 
+let reset = document.querySelector('.reset');
+reset.addEventListener('click', resetGrid)
+
+function newGrid() {
+  let side = prompt("What size?\nlimit:100x100 squares");
+  let cells = document.getElementsByClassName("cell");
+    while(cells.length > 0){
+        cells[0].parentNode.removeChild(cells[0]);
+    }
+
+  createGrid(side);
+}
+
+function resetGrid() {
+  let cells = document.querySelectorAll(".cell");
+  cells.forEach(cell => cell.style.background = "white")
+}
 
