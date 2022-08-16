@@ -27,6 +27,10 @@ gridMod.addEventListener("click", newGrid);
 let reset = document.querySelector('.reset');
 reset.addEventListener('click', resetGrid)
 
+let rgb = document.querySelector('.rgb');
+rgb.addEventListener('click', makeRgb)
+
+
 function newGrid() {
   let side = prompt("What size?\nlimit:100x100 squares");
   let cells = document.getElementsByClassName("cell");
@@ -42,3 +46,21 @@ function resetGrid() {
   cells.forEach(cell => cell.style.background = "white")
 }
 
+function makeRgb() {
+  let cells = document.querySelectorAll(".cell");
+  console.log(cells)
+  cells.forEach(cell => {
+    cell.removeEventListener("mouseover", () => {
+      cell.style.backgroundColor = getColor();
+    })
+    cell.addEventListener('mouseover', () => {
+      cell.style.backgroundColor = getRandomColor();
+    })
+  })
+}
+
+
+function getRandomColor() {
+  let color = Math.floor(Math.random()*16777215).toString(16);
+  return "#" + color
+}
